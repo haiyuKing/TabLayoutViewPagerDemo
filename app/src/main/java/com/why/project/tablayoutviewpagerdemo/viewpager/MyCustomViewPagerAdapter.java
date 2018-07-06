@@ -1,26 +1,24 @@
-package com.why.project.tablayoutviewpagerdemo.adapter;
+package com.why.project.tablayoutviewpagerdemo.viewpager;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.view.ViewGroup;
 
-import com.why.project.tablayoutviewpagerdemo.model.TabItemModel;
-
 import java.util.List;
 
 /**
  * Created by HaiyuKing
- * Used 当viewpager中fragment数量多的时候用FragmentStatePagerAdapter，反之则用FragmentPagerAdapter。
+ * Used MyCustomViewPager对应的适配器模板【放在这里，用于模板】
+ * 当viewpager中fragment数量多的时候用FragmentStatePagerAdapter，反之则用FragmentPagerAdapter。
  */
 
-public class ContentPagerAdapter extends FragmentStatePagerAdapter {
+public class MyCustomViewPagerAdapter extends FragmentStatePagerAdapter {
 
-	private List<TabItemModel> tabIndicators;
 	/**碎片集合*/
 	private List<Fragment> fragmentList;
 
-	public ContentPagerAdapter(FragmentManager fm) {
+	public MyCustomViewPagerAdapter(FragmentManager fm) {
 		super(fm);
 		// TODO Auto-generated constructor stub
 	}
@@ -28,25 +26,20 @@ public class ContentPagerAdapter extends FragmentStatePagerAdapter {
 	/**
 	 * 自定义构造函数：用于传递碎片集合过来
 	 * 一般都写上*/
-	public ContentPagerAdapter(FragmentManager fm, List<TabItemModel> tabIndicators, List<Fragment> fragmentList) {
+	public MyCustomViewPagerAdapter(FragmentManager fm, List<Fragment> fragmentList) {
 		super(fm);
-		this.tabIndicators = tabIndicators;
 		this.fragmentList = fragmentList;
 	}
 
 	@Override
-	public Fragment getItem(int position) {
-		return fragmentList.get(position);
+	public Fragment getItem(int arg0) {
+		// TODO Auto-generated method stub
+		return fragmentList.get(arg0);
 	}
 
 	@Override
 	public int getCount() {
 		return fragmentList.size();
-	}
-
-	@Override
-	public CharSequence getPageTitle(int position) {
-		return tabIndicators.get(position).getTabTitle();
 	}
 
 	@Override

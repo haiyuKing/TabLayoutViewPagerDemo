@@ -15,7 +15,7 @@ import com.why.project.tablayoutviewpagerdemo.R;
  * @Created HaiyuKing
  * @Used  首页界面——碎片界面
  */
-public class WebViewFragment extends BaseFragment{
+public class WebViewFragment extends BaseLazyFragment{
 	
 	private static final String TAG = "WebViewFragment";
 	/**View实例*/
@@ -31,18 +31,11 @@ public class WebViewFragment extends BaseFragment{
 
 		//使用FragmentTabHost时，Fragment之间切换时每次都会调用onCreateView方法，导致每次Fragment的布局都重绘，无法保持Fragment原有状态。
 		//http://www.cnblogs.com/changkai244/p/4110173.html
-		if(myView==null){
+		if(myView == null){
 			myView = inflater.inflate(R.layout.fragment_web, container, false);
 			//接收传参
 			Bundle bundle = this.getArguments();
 			bundle_param = bundle.getString("param");
-
-			//初始化控件以及设置
-			initView();
-			//初始化数据
-			initData();
-			//初始化控件的点击事件
-			initEvent();
 		}
 		//缓存的rootView需要判断是否已经被加过parent， 如果有parent需要从parent删除，要不然会发生这个rootview已经有parent的错误。
 		ViewGroup parent = (ViewGroup) myView.getParent();
@@ -55,12 +48,28 @@ public class WebViewFragment extends BaseFragment{
 	
 	@Override
     public void onActivityCreated(Bundle savedInstanceState) {
+		//初始化控件以及设置
+		initView();
+		//初始化控件的点击事件
+		initEvent();
+
         // TODO Auto-generated method stub
         super.onActivityCreated(savedInstanceState);
-        
-
     }
-    @Override
+
+    //实现禁止预加载的功能
+	@Override
+	public void fetchData() {
+		//初始化数据
+		initData();
+	}
+	//实现禁止预加载的功能
+	@Override
+	public void onInvisible() {
+
+	}
+
+	@Override
     public void onResume() {
         super.onResume();
     }

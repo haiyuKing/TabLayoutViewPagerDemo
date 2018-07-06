@@ -3,12 +3,12 @@ package com.why.project.tablayoutviewpagerdemo;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
 import com.why.project.tablayoutviewpagerdemo.adapter.ContentPagerAdapter;
 import com.why.project.tablayoutviewpagerdemo.fragment.WebViewFragment;
 import com.why.project.tablayoutviewpagerdemo.model.TabItemModel;
+import com.why.project.tablayoutviewpagerdemo.viewpager.MyCustomViewPager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +16,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
 	private TabLayout mTabLayout;
-	private ViewPager mTabViewPager;
+	private MyCustomViewPager mTabViewPager;
 
 	private List<TabItemModel> tabIndicators;
 	private List<Fragment> tabFragments;
@@ -36,7 +36,8 @@ public class MainActivity extends AppCompatActivity {
 
 	private void initViews() {
 		mTabLayout = (TabLayout) findViewById(R.id.tl_top);
-		mTabViewPager = (ViewPager) findViewById(R.id.vp_tab);
+		mTabViewPager = (MyCustomViewPager) findViewById(R.id.vp_tab);
+		mTabViewPager.setOffscreenPageLimit(3);//禁止预加载【如果想要延迟首个选项卡的销毁时间，那么就需要设置这个数值高点】
 	}
 
 	private void initDatas() {
