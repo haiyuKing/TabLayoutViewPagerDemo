@@ -25,6 +25,7 @@
         app:tabMode="scrollable"
         app:tabSelectedTextColor="@color/tab_text_selected_top"
         app:tabTextColor="@color/tab_text_normal_top"
+        app:tabTextAppearance="@style/TabLayoutTextStyle"
         app:tabIndicatorColor="@color/tab_auto_selected_top"
         app:tabIndicatorHeight="@dimen/tab_top_auto_height"
         app:tabGravity="center"

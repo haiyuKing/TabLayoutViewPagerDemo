@@ -8,4 +8,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!-- TabLayout的文字大小 -->
+    <style name="TabLayoutTextStyle">
+        <item name="android:textSize">@dimen/tab_top_auto_title_size</item>
+    </style>
+
 </resources>
